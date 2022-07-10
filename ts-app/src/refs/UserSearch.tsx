@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const UserSearch: React.FC = () => {
   const users = [
@@ -8,6 +8,7 @@ const UserSearch: React.FC = () => {
     { name: "Gurpreet", age: 20 },
     { name: "Manjinder", age: 20 },
   ];
+  const inputRef = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState<{ name: string; age: number } | undefined>();
   const [name, setName] = useState("");
   const onClick = () => {
@@ -18,6 +19,7 @@ const UserSearch: React.FC = () => {
     <div>
       User search
       <input
+        ref={inputRef}
         type="text"
         value={name}
         onChange={(e) => {
